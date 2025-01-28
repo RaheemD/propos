@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahim Dhannani - Full Stack Web Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            padding-top: 56px;
+            scroll-behavior: smooth;
+            /* Smooth scrolling */
+        }
+
+        .navbar {
+            background-color: rgba(102, 126, 234, 0.9);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+        }
+
+        .nav-link {
+            color: white !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #f0f4f8 !important;
+            text-decoration: underline;
+            /* Added hover underline */
+        }
+
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background-color: rgba(102, 126, 234, 1);
+                padding: 1rem;
+                border-radius: 0 0 10px 10px;
+            }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            animation: fadeIn 1.5s ease-in-out;
+            /* Fade-in animation for hero section */
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #667eea;
+        }
+
+        .skill-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Styles for project cards */
+        .project-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 4px solid #e74c3c;
+            /* Preserve your existing border style */
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card .card-img-top {
+            height: 200px;
+            /* Set a fixed height for all images */
+            object-fit: cover;
+            /* Ensure images cover the area without distortion */
+        }
+
+        .project-card .card-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card .card-title {
+            font-size: 1.25rem;
+            /* Adjust as needed */
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card .card-text {
+            flex-grow: 1;
+            font-size: 0.9rem;
+            /* Adjust as needed */
+        }
+
+        .project-card .btn {
+            align-self: start;
+            margin-top: auto;
+        }
+
+        /* Ensure all columns have the same height */
+        #projects .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #projects .col-md-4 {
+            display: flex;
+            margin-bottom: 20px;
+            /* Add some space between rows */
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #667eea;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 20px;
+            bottom: -20px;
+            width: 1px;
+            background-color: #667eea;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Typing effect for About Me section */
+        #typing {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 8s steps(40, end) infinite;
+        }
+
+        @keyframes typing {
+            0% {
+                width: 0
+            }
+
+            40% {
+                width: 100%
+            }
+
+            60% {
+                width: 100%
+            }
+
+            100% {
+                width: 0
+            }
+        }
+
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Basic styles for the timeline */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item {
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards paused;
+        }
+
+        .timeline-item:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .timeline-item:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .timeline-item:nth-child(3) {
+            animation-delay: 0.7s;
+        }
+
+
+
+        /* Add more if you have more items */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .education-card {
+            opacity: 0;
+        }
+
+        .education-card.slide-left.animate {
+            animation: slideInLeft 1s ease forwards;
+        }
+
+        .education-card.slide-right.animate {
+            animation: slideInRight 1s ease forwards;
+        }
+
+        .circular-image-container {
+            position: relative;
+            width: 280px;
+            height: 285px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .circular-image-container::before,
+        .circular-image-container::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 8px solid transparent;
+            border-radius: 50%;
+        }
+
+        .circular-image-container::before {
+            border-top-color: #3498db;
+            border-right-color: #3498db;
+            animation: rotate 4s linear infinite;
+        }
+
+        .circular-image-container::after {
+            border-bottom-color: #e74c3c;
+            border-left-color: #e74c3c;
+            animation: rotate 4s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(90deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            75% {
+                transform: rotate(270deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .circular-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        footer {
+            padding: 1rem 0;
+        }
+
+        footer p {
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #667eea;
+        }
+
+
+
+
+        @media (max-width: 767px) {
+            footer .row>div {
+                text-align: center !important;
+            }
+
+            footer .row>div:last-child {
+                margin-top: 0.5rem;
+            }
+        }
+
+        .navbar-toggler {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .navbar-toggler-icon {
+            width: 1.25em;
+            height: 1.25em;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                padding-top: 1rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <button id="languageToggle" class="btn btn-outline-light">FR</button>
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" data-en="About" data-fr="À propos">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills" data-en="Skills" data-fr="Compétences">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects" data-en="Projects" data-fr="Projets">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience" data-en="Experience" data-fr="Expérience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education" data-en="Education" data-fr="Formation">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" data-en="Contact" data-fr="Contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-2 fw-bold mb-3 animate-fade-in">Rahim Dhannani</h1>
+            <h2 class="lead fs-2 mb-4 animate-fade-in" data-en="Full Stack Developer"
+                data-fr="Développeur Full Stack">Full Stack Developer</h2>
+            <p class="fs-5 mb-5 animate-fade-in" id="typing"
+                data-en="Passionate about creating dynamic and user-friendly web experiences"
+                data-fr="Passionné par la création d'expériences web dynamiques et conviviales">Passionate about
+                creating dynamic and user-friendly web experiences</p>
+            <a href="#contact" class="btn btn-light btn-lg animate-fade-in" data-en="Get in Touch"
+                data-fr="Contactez-moi">Get in Touch</a>
+        </div>
+    </header>
+
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="section-title" data-en="About Me" data-fr="À propos de moi">About Me</h2>
+
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="fs-5"
+                        data-en="Recently graduated as a Web Application Developer, I am enthusiastic about starting my career in web development. My internships and personal projects demonstrate my motivation and ability to learn quickly. Dynamic and rigorous, I wish to put my skills into practice and contribute to live projects."
+                        data-fr="Âgé de 43 ans, je suis diplômé en conception et développement d'applications. Passionné, motivé et apprenant rapide, comme en témoignent mes stages et projets personnels. Je vise à contribuer à des projets innovants avec dynamisme et rigueur.">
+                        Recently graduated as a Web Application Developer, I am enthusiastic about starting my career in
+                        web development. My internships and personal projects demonstrate my motivation and ability to
+                        learn quickly. Dynamic and rigorous, I wish to put my skills into practice and contribute to
+                        live projects.</p>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <div class="circular-image-container">
+                        <img src="./images/photo-removebg-preview.png" alt="Rahim Dhannani" class="img-fluid rounded-circle"
+                            style="width: 300px; height: 300px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-en="Skills" data-fr="Compétences">Skills</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="skill-item">
+                        <h3 class="h5 mb-3"><i class="fas fa-code me-2"></i><span data-en="Frontend Development"
+                                data-fr="Développement Frontend">Frontend Development</span></h3>
+                        <p data-en="HTML, CSS, Bootstrap, JavaScript, React"
+                            data-fr="HTML, CSS, Bootstrap, JavaScript, React">HTML, CSS, Bootstrap, JavaScript, React
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-item">
+                        <h3 class="h5 mb-3"><i class="fas fa-server me-2"></i><span data-en="Backend Development"
+                                data-fr="Développement Backend">Backend Development</span></h3>
+                        <p data-en="Node.js, Express.js, PHP" data-fr="Node.js, Express.js, PHP">Node.js, Express.js,
+                            PHP</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-item">
+                        <h3 class="h5 mb-3"><i class="fas fa-database me-2"></i><span data-en="Database Management"
+                                data-fr="Gestion de Base de Données">Database Management</span></h3>
+                        <p data-en="Firebase, MySQL, MongoDB" data-fr="Firebase, MySQL, MongoDB">Firebase, MySQL,
+                            MongoDB</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-item">
+                        <h3 class="h5 mb-3"><i class="fas fa-tools me-2"></i><span data-en="Other Skills"
+                                data-fr="Autres Compétences">Other Skills</span></h3>
+                        <p data-en="GitHub, Figma, Project Management" data-fr="GitHub, Figma, Gestion de Projet">
+                            GitHub, Figma, Project Management</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-item">
+                        <h3 class="h5 mb-3"><i class="fas fa-globe me-2"></i><span data-en="Languages"
+                                data-fr="Langues">Languages</span></h3>
+                        <p data-en="English (Fluent), French (DELF B1)"
+                            data-fr="Anglais (Bilingue), Français (DELF B1)">English (Fluent), French (DELF B1)</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-item">
+                        <h3 class="h5 mb-3"><i class="fas fa-certificate me-2"></i><span data-en="Certifications"
+                                data-fr="Certifications">Certifications</span></h3>
+                        <p data-en="CLÉA, Digital Marketing, NAC-NASSCOM"
+                            data-fr="CLÉA, Marketing Digital, NAC-NASSCOM">CLÉA, Digital Marketing, NAC-NASSCOM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ... (Projects section remains the same) ... -->
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center" data-en="Projects" data-fr="Projets">Projects</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card project-card">
+                        <img src="./images/mefit.png" class="card-img-top" alt="MeFit">
+                        <div class="card-body">
+                            <h5 class="card-title" data-en="MeFit" data-fr="MeFit">MeFit</h5>
+                            <p class="card-text" data-en="A responsive
+                            website transforming your your through fitness in Vite + React + TS"
+                                data-fr="Un site web réactif pour transformer votre vie grâce au fitness en Vite + React + TS">A responsive
+                                website transforming your life through fitness in Vite + React + TS</p>
+                            <a href="https://mefitt.netlify.app" class="btn btn-primary" target="_blank"
+                                data-en="View Project" data-fr="Voir le Projet">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card project-card">
+                        <img src="./images/FF.png" class="card-img-top" alt="Acopad Form">
+                        <div class="card-body">
+                            <h5 class="card-title" data-en="Acopad Form" data-fr="Formulaire Acopad">Acopad Form</h5>
+                            <p class="card-text" data-en="An interactive feedback form developed for Acopad in JS."
+                                data-fr="Un formulaire de feedback interactif développé pour Acopad en JS.">An interactive
+                                feedback form developed for Acopad in JS.</p>
+                            <a href="https://formulaire-acopad.netlify.app" class="btn btn-primary" target="_blank"
+                                data-en="View Project" data-fr="Voir le Projet">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card project-card">
+                        <img src="./images/Dash.png" class="card-img-top" alt="Admin Dashboard">
+                        <div class="card-body">
+                            <h5 class="card-title" data-en="Admin Dashboard" data-fr="Tableau de Bord Admin">Admin
+                                Dashboard</h5>
+                            <p class="card-text" data-en="A mobile-friendly static admin dashboard interface in HTML, CSS, Bootstrap."
+                                data-fr="Une interface de tableau de bord statique mobile en HTML, CSS, Bootstrap.">A mobile-friendly static
+                                admin dashboard interface in HTML, CSS, Bootstrap.</p>
+                            <a href="https://rdhannani.github.io/AdminDash" class="btn btn-primary" target="_blank"
+                                data-en="View Project" data-fr="Voir le Projet">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card project-card">
+                        <img src="./images/crd.png" class="card-img-top" alt="CRUD">
+                        <div class="card-body">
+                            <h5 class="card-title" data-en="CRUD" data-fr="CRUD">CRUD</h5>
+                            <p class="card-text" data-en="200 records with CRUD operations on a backend in Node.js, Express.js (Refresh and wait 2 minutes for the data to load)."
+                                data-fr="200 enregistrements avec des opérations CRUD sur un backend en Node.js, Express.js (Rafraîchir et attendre 2 minutes pour que les données s'affichent).">200 records with
+                                CRUD operations on a backend in Node.js, Express.js (Refresh and wait 2 minutes for the data to load).</p>
+                            <a href="https://megaloremipsum.netlify.app/" class="btn btn-primary" target="_blank"
+                                data-en="View Project" data-fr="Voir le Projet">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card project-card">
+                        <img src="./images/style.png" class="card-img-top" alt="Shopping Website">
+                        <div class="card-body">
+                            <h5 class="card-title" data-en="Shopping Website" data-fr="Un site web de shopping">
+                                Shopping Website</h5>
+                            <p class="card-text"
+                                data-en="An e-commerce website with a responsive design and a shopping cart made in Vite + React + TS."
+                                data-fr="Un site e-commerce avec un design réactif et un panier d'achat, créé avec Vite, React et TypeScript.">
+                                An e-commerce website with a responsive design and a shopping cart made in Vite + React + TS.</p>
+                            <a href="https://shopstyles.netlify.app" class="btn btn-primary" target="_blank"
+                                data-en="View Project" data-fr="Voir le Projet">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card project-card">
+                        <img src="./images/TempClock.png" class="card-img-top" alt="Temperature Clock">
+                        <div class="card-body">
+                            <h5 class="card-title" data-en="Temperature Clock" data-fr="Horloge de Température">
+                                Temperature Clock</h5>
+                            <p class="card-text"
+                                data-en="A responsive temperature clock using HTML, CSS, and JavaScript."
+                                data-fr="Une horloge de température réactive utilisant HTML, CSS et JavaScript.">A
+                                responsive temperature clock using HTML, CSS, and JavaScript.</p>
+                            <a href="https://tempclock.netlify.app" class="btn btn-primary" target="_blank"
+                                data-en="View Project" data-fr="Voir le Projet">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="experience" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-en="Work Experience" data-fr="Expérience Professionnelle">Work
+                Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3 class="h5" data-en="Internship - Web Application Developer"
+                        data-fr="Stage - Concepteur Développeur d'Applications">Internship - Web Application Developer
+                    </h3>
+                    <p class="mb-1">Acopad, Avignon, France</p>
+                    <p class="text-muted" data-en="March 2024 - April 2024" data-fr="Mars 2024 - Avril 2024">March 2024
+                        - April 2024</p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="h5" data-en="English Customer Service, Automobile"
+                        data-fr="Téléconseiller Anglophone en Automobile">English Customer Service, Automobile</h3>
+                    <p class="mb-1">B2S /Comdata Group, Gennevilliers, France</p>
+                    <p class="text-muted" data-en="November 2016 - November 2018"
+                        data-fr="Novembre 2016 - Novembre 2018">November 2016 - November 2018</p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="h5" data-en="Senior Consultant" data-fr="Consultant Senior">Senior Consultant</h3>
+                    <p class="mb-1">Sutherland Global Services, Dubai, UAE</p>
+                    <p class="text-muted" data-en="September 2015 - July 2016" data-fr="Septembre 2015 - Juillet 2016">
+                        September 2015 - July 2016</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center" data-en="Education" data-fr="Formation">Education</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card education-card slide-left">
+                        <div class="card-body">
+                            <h3 class="card-title h5" data-en="Web Application Developer"
+                                data-fr="Concepteur Développeur d'Applications">Web Application Developer</h3>
+                            <p class="card-text mb-1">Avenir 84, Avignon, France</p>
+                            <p class="card-text text-muted" data-en="September 2023 - May 2024"
+                                data-fr="Septembre 2023 - Mai 2024">September 2023 - May 2024</p>
+                            <p class="card-text" data-en="RNCP Level 6 diploma (equivalent to Bachelor's degree)"
+                                data-fr="Diplôme RNCP Niveau 6 (équivalent à BAC + 4)">RNCP Level 6 diploma (equivalent
+                                to Bachelor's degree)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card education-card slide-right">
+                        <div class="card-body">
+                            <h3 class="card-title h5" data-en="Diploma in Computer Science"
+                                data-fr="Diplôme en Informatique">Diploma in Computer Science</h3>
+                            <p class="card-text mb-1">NIIT Technology Academy, Mumbai, India</p>
+                            <p class="card-text text-muted" data-en="October 2000 - November 2002"
+                                data-fr="Octobre 2000 - Novembre 2002">October 2000 - November 2002</p>
+                            <p class="card-text" data-en="Associate Degree" data-fr="Diplôme Bac+2">Associate Degree</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ... (Contact section remains the same) ... -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-en="Contact Me" data-fr="Contactez-moi">Contact Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact">
+                        <p style="display:none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label" data-en="Name" data-fr="Nom">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label" data-en="Email" data-fr="Email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label" data-en="Message" data-fr="Message">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-en="Send Message" data-fr="Envoyer le message">Send Message</button>
+                    </form>
+                    <div id="thank-you-message" style="display:none; margin-top: 20px;">
+                        <p data-en="Thank you! Your message has been sent." data-fr="Merci! Votre message a été envoyé.">
+                            Thank you! Your message has been sent.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-3">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-auto">
+                    <p class="mb-0 d-inline-block" data-en="&copy; 2024 Rahim Dhannani. All rights reserved."
+                        data-fr="&copy; 2024 Rahim Dhannani. Tous droits réservés.">&copy; 2024 Rahim Dhannani. All
+                        rights reserved.</p>
+                </div>
+                <div class="col-auto">
+                    <a href="https://linkedin.com/in/rahim-dhannani" class="text-white me-3" target="_blank"
+                        aria-label="LinkedIn">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                    <a href="https://github.com/RaheemD" class="text-white" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            const languageToggle = document.getElementById('languageToggle');
+            let isEnglish = true;
+
+            function updateLanguage(lang) {
+                document.querySelectorAll('[data-en][data-fr]').forEach(el => {
+                    el.textContent = el.getAttribute(`data-${lang}`);
+                });
+            }
+
+            languageToggle.addEventListener('click', function () {
+                if (isEnglish) {
+                    languageToggle.textContent = 'EN';
+                    updateLanguage('fr');
+                } else {
+                    languageToggle.textContent = 'FR';
+                    updateLanguage('en');
+                }
+                isEnglish = !isEnglish;
+            });
+        });
+        // Add your custom JavaScript code here...
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.querySelectorAll('.timeline-item').forEach((item, index) => {
+                            item.style.animationDelay = `${0.5 * (index + 1)}s`;
+                            item.style.animationPlayState = 'running';
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const timelineSection = document.querySelector('#experience');
+            if (timelineSection) {
+                observer.observe(timelineSection);
+            }
+        });
+
+        // Add your custom JavaScript code here...
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.querySelectorAll('.education-card').forEach(card => {
+                            card.classList.add('animate');
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const educationSection = document.querySelector('#education');
+            if (educationSection) {
+                observer.observe(educationSection);
+            }
+        });
+
+        // Add your custom JavaScript code here...
+        document.addEventListener('DOMContentLoaded', function () {
+            var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            var navbarToggler = document.querySelector('.navbar-toggler');
+            var navbarCollapse = document.querySelector('.navbar-collapse');
+
+            navLinks.forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth < 992) {
+                        navbarCollapse.classList.remove('show');
+                        navbarToggler.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+        });
+
+        // Add your custom JavaScript code here...
+        document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form[name="contact"]');
+    const thankYouMessage = document.getElementById('thank-you-message');
+
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                form.style.display = 'none';
+                if (thankYouMessage) {
+                    thankYouMessage.style.display = 'block';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    }
+});
+    </script>
+</body>
+
+</html>
