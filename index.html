@@ -696,30 +696,36 @@
             <h2 class="section-title text-center" data-en="Contact Me" data-fr="Contactez-moi">Contact Me</h2>
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="contact">
-                        <p style="display:none;">
-                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                        </p>
-                        </div>
+                    <!-- Form -->
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+
+                        <input type="hidden" name="access_key" value="856602a5-ca65-4a21-8ba2-4222bee75eb2">
                         <div class="mb-3">
                             <label for="name" class="form-label" data-en="Name" data-fr="Nom">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <input type="text" class="form-control" id="name" name="name" required placeholder="Name / Nom">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label" data-en="Email" data-fr="Email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email" required placeholder="Email">
                         </div>
                         <div class="mb-3">
                             <label for="message" class="form-label" data-en="Message" data-fr="Message">Message</label>
-                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Message"></textarea>
                         </div>
+
+                        <!-- Captcha -->
+                        
+                        <div class="h-captcha" data-captcha="true"></div>
+                       
+
                         <button type="submit" class="btn btn-primary" data-en="Send Message" data-fr="Envoyer le message">Send Message</button>
                     </form>
+                    <!-- Thank You Message -->
                     <div id="thank-you-message" style="display:none; margin-top: 20px;">
                         <p data-en="Thank you! Your message has been sent." data-fr="Merci! Votre message a été envoyé.">
                             Thank you! Your message has been sent.
                         </p>
+                        <a href="#" id="goBackLink" data-en="Go back" data-fr="Retourner">Go back</a>
                     </div>
                 </div>
             </div>
